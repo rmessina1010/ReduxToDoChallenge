@@ -6,7 +6,9 @@ export const addTodo = (todo) => (dispatch) => {
     complete: false,
   }
   dispatch({
-    // Task: Create an object to dispatch. use an object in this file as an example
+    // Task: Create an object to dispatch. use an object in this file as an example **DONE**
+    type: ActionTypes.ADD_TODO,
+    payload: newTodo,
   })
 }
 
@@ -20,5 +22,6 @@ export const clearAllTasks = () => ({
 })
 
 export const deleteAllTasks = () => ({
-  // Task: Create an object to dispatch. use an object in this file as an example
+  type: ActionTypes.DELETE_TASKS,
+  // Task: Create an object to dispatch. use an object in this file as an example **DONE**
 })
