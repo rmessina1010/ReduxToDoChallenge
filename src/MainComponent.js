@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // Task:  Import functions from ActionCreators ****DONE*****
-import { toggleToDo, clearAllTasks, deleteAllTasks, addTodo } from './redux/ActionCreators';
+import { toggleToDo, clearAllTasks, deleteAllTasks, deleteSingle, addTodo } from './redux/ActionCreators';
 import { ToDo } from './redux/todo';
 
 // Task: Assign reducer to prop /**DONE**/
@@ -16,6 +16,7 @@ const mapDispatchToProps = {
   toggleToDo,
   clearAllTasks,
   deleteAllTasks,
+  deleteSingle,
   addTodo,
 }
 
@@ -44,18 +45,26 @@ class Main extends Component {
           {/* Task: map through the list displaying the list item. don't forget the unique key*/}
           {this.props.ToDo.todo.map((item, index) => (
             <li key={index}>
-              <input
-                type='checkbox'
-                // Task: replace true with the property used to show completion **DONE**
-                checked={item.complete}
-                // Task: dispatch toggle instead of console.log. Use the index of the array
-                onChange={
-                  () => {
-                    this.props.toggleToDo(index);
-                    console.log('Toggling');
+              <span className="leftCont" >
+                <input
+                  type='checkbox'
+                  // Task: replace true with the property used to show completion **DONE**
+                  checked={item.complete}
+                  // Task: dispatch toggle instead of console.log. Use the index of the array
+                  onChange={
+                    () => {
+                      this.props.toggleToDo(index);
+                      console.log('Toggling');
+                    }
                   }
-                }
-              />
+                />
+                <button onClick={() => {
+                  console.log('Delete individual item');
+                  this.props.deleteSingle(index);
+                }}
+                  className="delX"
+                >X</button>
+              </span>
               {item.activity}
             </li>
           ))

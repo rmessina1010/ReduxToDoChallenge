@@ -26,6 +26,12 @@ export const ToDo = (state = initialState, action) => {
       // TASK implement the final action type/*DONE*/
       return { ...state, todo: [] }
 
+    case actionTypes.DELETE_SINGLE:
+      // BONUS TASK implement the final action type/*DONE*/
+      let newArr = [...state.todo];
+      newArr.splice(action.payload, 1);
+      return { ...state, todo: newArr }
+
     default:
       return state
   }
